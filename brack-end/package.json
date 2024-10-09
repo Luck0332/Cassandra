@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "cassandra-driver": "^4.7.2",
     "express": "^4.21.1"
   }
 }
