@@ -10,7 +10,8 @@ const query = `
         id UUID PRIMARY KEY,
         name TEXT,
         email TEXT,
-        age TEXT
+        age TEXT,
+        idennumm TEXT
     )
 `;
 

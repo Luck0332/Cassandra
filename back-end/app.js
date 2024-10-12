@@ -29,15 +29,15 @@ client.connect()
 
 // CREATE - เพิ่มข้อมูลผู้ใช้ใหม่
 app.post('/users', async (req, res) => {
-  const { name, email, age } = req.body;
+  const { name, email, age , idennumm} = req.body;
   const id =uuidv4();
 
-  if (!name || !email || !age) {
+  if (!name || !email || !age||!idennumm) {
       return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  const query = 'INSERT INTO users (id, name, email, age) VALUES (?, ?, ?, ?)';
-  const params = [id, name, email, age];
+  const query = 'INSERT INTO users (id, name, email, age ,idennumm) VALUES (?, ?, ?, ?,?)';
+  const params = [id, name, email, age,idennumm];
 
   try {
       await client.execute(query, params);
@@ -47,6 +47,7 @@ app.post('/users', async (req, res) => {
       res.status(500).json({ error: 'Failed to create user' });
   }
 });
+
 // READ - ดึงข้อมูลผู้ใช้ทั้งหมด
 app.get('/users', async (req, res) => {
   const query = 'SELECT * FROM users';
@@ -83,7 +84,7 @@ app.get('/users/:id', async (req, res) => {
 // UPDATE - อัปเดตข้อมูลผู้ใช้
 app.patch('/users/:id', async (req, res) => {
   const id = req.params.id;
-  const { name, email, age } = req.body;
+  const { name, email, age ,idennumm} = req.body;
   const params=[];
 
   const updateStatements = [];
@@ -98,6 +99,10 @@ app.patch('/users/:id', async (req, res) => {
   if (age) {
       updateStatements.push('age = ?');
       params.push(age);
+  }
+  if(idennumm){
+    updateStatements.push('idennumm = ?');
+      params.push(idennumm);
   }
 
   if (updateStatements.length === 0) {
