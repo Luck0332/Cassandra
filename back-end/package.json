@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,6 +12,7 @@
   "description": "",
   "dependencies": {
     "cassandra-driver": "^4.7.2",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "uuid": "^10.0.0"
   }
 }
