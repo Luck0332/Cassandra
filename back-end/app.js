@@ -2,11 +2,11 @@
 const express = require('express');
 // const cassandra = require('cassandra-driver');
 const { v4: uuidv4 } = require('uuid');
-
+const cors = require('cors'); // นำเข้า cors
 
 const app = express();
 app.use(express.json());
-
+app.use(cors()); // ใช้ cors
 // // ตั้งค่าการเชื่อมต่อกับ Cassandra
 // const client = new cassandra.Client({
 //   contactPoints: ['127.0.0.1:9042'],
@@ -142,7 +142,9 @@ app.delete('/users/:id', async (req, res) => {
 });
 
 // เริ่มต้นเซิร์ฟเวอร์
-const port = 3000;
+const port = 3001;
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+
+module.exports = app;
